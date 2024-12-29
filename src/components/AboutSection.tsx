@@ -1,11 +1,12 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AboutSection() {
   return (
     <section className="relative flex items-center justify-center bg-background text-foreground py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto grid gap-8 items-center md:grid-cols-2">
         <div className="space-y-6 text-center md:text-left">
-          <h2 className="text-lg text-orange-500">About Us</h2>
+          <h2 className="text-lg text-primary">About Us</h2>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             We Create the Best{" "}
             <span className="text-primary">Pizza Experience</span>
@@ -21,7 +22,7 @@ export default function AboutSection() {
             <li>✔️ A commitment to quality and customer satisfaction.</li>
           </ul>
           <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/80">
-            Learn More
+           <Link href={"/about"}>Learn More</Link>
           </button>
         </div>
         <div className="relative grid gap-4">

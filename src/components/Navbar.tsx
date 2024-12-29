@@ -32,7 +32,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-card text-card-foreground shadow-md z-50">
+    <nav className="relative bg-card text-card-foreground shadow-md z-50">
       <LoadingBar
         color="#ff0000"
         progress={progress}
@@ -114,13 +114,27 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center justify-between mt-4">
           <ul className="flex items-center space-x-6 text-sm">
-            <li className="hover:text-primary cursor-pointer">Home</li>
-            <li className="hover:text-primary cursor-pointer">Menu</li>
-            <li className="hover:text-primary cursor-pointer">Blog</li>
-            <li className="hover:text-primary cursor-pointer">Pages</li>
-            <li className="hover:text-primary cursor-pointer">About</li>
-            <li className="hover:text-primary cursor-pointer">Shop</li>
-            <li className="hover:text-primary cursor-pointer">Contact</li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="/">Menu</Link>
+            </li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="/">Blog</Link>
+            </li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="/">Pages</Link>
+            </li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="about">About</Link>
+            </li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="/">Shop</Link>
+            </li>
+            <li className="hover:text-primary cursor-pointer">
+              <Link href="/">Contact</Link>
+            </li>
           </ul>
           <div className="flex items-center space-x-4">
             <div className="relative">
