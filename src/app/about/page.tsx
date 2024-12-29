@@ -1,11 +1,15 @@
 import React from "react";
 import AboutUs from "@/components/AboutComps/Aboutus";
+import TeamMembers from "@/components/AboutComps/TeamMembers";
 
-export const About: React.FC = () => {
+const About: React.FC = () => {
   return (
     <div>
       <main className="pt-[5px]">
         <AboutUs />
+      </main>
+      <main className="pt-[5px]">
+        <TeamMembers />
       </main>
     </div>
   );
