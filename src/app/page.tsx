@@ -5,10 +5,10 @@ import About from "@/components/AboutSection";
 const Home: React.FC = () => {
   return (
     <div>
-      <main className="pt-5">
+      <main className="pt-[5px]">
         <HeroSection />
       </main>
-      <main className="pt-5">
+      <main className="pt-[5px]">
         <About />
       </main>
     </div>
