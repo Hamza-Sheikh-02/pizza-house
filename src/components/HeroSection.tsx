@@ -19,7 +19,7 @@ export default function HeroSection() {
 
         <div className="relative flex justify-center items-center">
           <Image
-            src="/herosection.jpg"
+            src="/heroSection.jpg"
             alt="Delicious pizza"
             width={500}
             height={500}
