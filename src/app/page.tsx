@@ -4,6 +4,7 @@ import About from "@/components/AboutSection";
 import FoodCategory from "@/components/FoodCategory";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Testimonials from "@/components/Testimonials";
+import BlogSection from "@/components/BlogSection";
 
 const Home: React.FC = () => {
   return (
@@ -22,6 +23,9 @@ const Home: React.FC = () => {
       </main>
       <main className="pt-[5px]">
         <Testimonials />
+      </main>
+      <main className="pt-[5px]">
+        <BlogSection />
       </main>
     </div>
   );
