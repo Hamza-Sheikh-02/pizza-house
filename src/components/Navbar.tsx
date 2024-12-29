@@ -133,7 +133,7 @@ const Navbar = () => {
               <Link href="/">Shop</Link>
             </li>
             <li className="hover:text-primary cursor-pointer">
-              <Link href="/">Contact</Link>
+              <Link href="/contact">Contact</Link>
             </li>
           </ul>
           <div className="flex items-center space-x-4">
