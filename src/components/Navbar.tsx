@@ -32,7 +32,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="w-full bg-card text-card-foreground shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-card text-card-foreground shadow-md z-50">
       <LoadingBar
         color="#ff0000"
         progress={progress}
