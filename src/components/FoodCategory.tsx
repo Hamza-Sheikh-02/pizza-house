@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function FoodCategory() {
   return (
-    <section className="bg-gray-100 dark:bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-background text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <p className="text-primary text-lg font-medium">Food Category</p>

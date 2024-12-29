@@ -3,7 +3,7 @@ import { FaPizzaSlice, FaUtensils, FaWineGlassAlt } from "react-icons/fa";
 
 export default function WhyChooseUs() {
   return (
-    <section className="text-white py-16 px-4 sm:px-6 lg:px-8">
+    <section className="bg-gray-100 dark:bg-black text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="grid grid-cols-2 gap-4 order-1 md:order-none">
