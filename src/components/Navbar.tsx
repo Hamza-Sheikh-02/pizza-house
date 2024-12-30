@@ -90,20 +90,11 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link href="/pages" className="hover:text-primary">
-                Pages
-              </Link>
-            </li>
-            <li>
               <Link href="/about" className="hover:text-primary">
                 About
               </Link>
             </li>
-            <li>
-              <Link href="/shop" className="hover:text-primary">
-                Shop
-              </Link>
-            </li>
+            <li></li>
             <li>
               <Link href="/contact" className="hover:text-primary">
                 Contact
@@ -128,9 +119,6 @@ const Navbar = () => {
             </li>
             <li className="hover:text-primary cursor-pointer">
               <Link href="about">About</Link>
-            </li>
-            <li className="hover:text-primary cursor-pointer">
-              <Link href="/">Shop</Link>
             </li>
             <li className="hover:text-primary cursor-pointer">
               <Link href="/contact">Contact</Link>
