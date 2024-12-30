@@ -26,8 +26,7 @@ export default function Testimonial() {
   useEffect(() => {
     async function fetchTestimonials() {
       try {
-        const data =
-          await client.fetch(`*[_type == "testimonials"] | order(id asc){
+        const data = await client.fetch(`*[_type == "testimonials"] | order(id asc){
           id,
           name,
           role,
