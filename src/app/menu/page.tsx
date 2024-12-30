@@ -14,7 +14,7 @@ export default function Menu() {
     {
       id: 1,
       content: (
-        <div>
+        <div className="text-4xl">
           <FavouriteFlavours />
           <PremiumFlavour />
         </div>
@@ -23,7 +23,7 @@ export default function Menu() {
     {
       id: 2,
       content: (
-        <div>
+        <div className="text-4xl">
           <DeliciousDesserts />
           <RefreshingDrinks />
         </div>
@@ -36,29 +36,29 @@ export default function Menu() {
   const prevPage = () => setCurrentPage((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="py-10 px-4 bg-white dark:bg-black text-black dark:text-white">
-      <h2 className="text-center text-3xl md:text-4xl font-bold mb-6">
-        Explore Our <span className="text-primary">Menu</span>
+    <div className="py-20 px-8 bg-white dark:bg-black text-black dark:text-white">
+      <h2 className="text-center text-6xl md:text-7xl font-bold mb-12">
+        Explore Our <span className="text-primary text-7xl">Menu</span>
       </h2>
-      <div className="relative max-w-5xl mx-auto bg-gray-100 dark:bg-gray-950 rounded-lg shadow-lg p-6 overflow-hidden">
+      <div className="relative mx-auto bg-gray-100 dark:bg-gray-950 p-12 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentPage}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
           >
             {pages.find((page) => page.id === currentPage)?.content}
           </motion.div>
         </AnimatePresence>
 
         {/* Pagination Controls */}
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-12">
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
-            className={`px-4 py-2 mx-2 rounded ${
+            className={`px-8 py-4 mx-4 text-3xl rounded ${
               currentPage === 1
                 ? "text-gray-400 bg-gray-200 cursor-not-allowed"
                 : "text-primary bg-gray-200 hover:bg-gray-300"
@@ -70,7 +70,7 @@ export default function Menu() {
             <button
               key={page.id}
               onClick={() => setCurrentPage(page.id)}
-              className={`px-4 py-2 mx-2 rounded ${
+              className={`px-8 py-4 mx-4 text-3xl rounded ${
                 currentPage === page.id
                   ? "text-white bg-primary"
                   : "text-primary bg-gray-200 hover:bg-gray-300"
@@ -82,7 +82,7 @@ export default function Menu() {
           <button
             onClick={nextPage}
             disabled={currentPage === pages.length}
-            className={`px-4 py-2 mx-2 rounded ${
+            className={`px-8 py-4 mx-4 text-3xl rounded ${
               currentPage === pages.length
                 ? "text-gray-400 bg-gray-200 cursor-not-allowed"
                 : "text-primary bg-gray-200 hover:bg-gray-300"
