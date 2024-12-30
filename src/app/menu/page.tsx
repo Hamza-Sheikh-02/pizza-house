@@ -6,8 +6,8 @@ import Image from "next/image";
 export default function MenuPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
-      <h1 className="text-4xl font-bold text-center text-primary mb-10">
-        Pizza House
+      <h1 className="text-4xl font-bold text-center mb-10">
+       Our <span className="text-primary">Menu</span>
       </h1>
       <section className="mb-12">
         <h2 className="text-3xl font-bold mb-6">
