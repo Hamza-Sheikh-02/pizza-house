@@ -118,7 +118,7 @@ const Navbar = () => {
               <Link href="/">Home</Link>
             </li>
             <li className="hover:text-primary cursor-pointer">
-              <Link href="/">Menu</Link>
+              <Link href="/menu">Menu</Link>
             </li>
             <li className="hover:text-primary cursor-pointer">
               <Link href="/">Blog</Link>
