@@ -66,7 +66,7 @@ export default function DeliciousDesserts() {
                   href={`/product/${product.slug.current}`}
                   className="inline-block mt-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded hover:bg-primary/80"
                 >
-                  View
+                  Order Now
                 </Link>
               </div>
             </div>
