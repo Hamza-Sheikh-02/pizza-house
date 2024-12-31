@@ -10,6 +10,7 @@ interface Product {
   stockStatus: string;
 }
 
+// Fetch product data
 async function fetchProduct(slug: string): Promise<Product | null> {
   const product = await client.fetch(
     `*[_type == "product" && slug.current == $slug][0]{
@@ -24,7 +25,26 @@ async function fetchProduct(slug: string): Promise<Product | null> {
   return product || null;
 }
 
-function ProductPage({ product }: { product: Product }) {
+// Dynamic metadata
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const product = await fetchProduct(params.slug);
+  return {
+    title: product?.title || "Product Not Found",
+  };
+}
+
+// Product Page Component
+export default async function Page({ params }: { params: { slug: string } }) {
+  const product = await fetchProduct(params.slug);
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   const { title, description, price, images, stockStatus } = product;
 
   return (
@@ -78,25 +98,4 @@ function ProductPage({ product }: { product: Product }) {
       </div>
     </section>
   );
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const product = await fetchProduct(params.slug);
-  return {
-    title: product?.title || "Product Not Found",
-  };
-}
-
-export default async function Page({ params }: { params: { slug: string } }) {
-  const product = await fetchProduct(params.slug);
-
-  if (!product) {
-    return <div>Product not found</div>;
-  }
-
-  return <ProductPage product={product} />;
 }
