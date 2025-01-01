@@ -63,7 +63,7 @@ export default function PremiumFlavour() {
                 </h2>
                 <p className="mt-1 text-sm">${product.price.toFixed(2)}</p>
                 <Link
-                  href={`/product/${product.slug.current}`}
+                  href={`/products/${product.slug.current}`}
                   className="inline-block mt-2 px-4 py-2 bg-primary text-white text-sm font-medium rounded hover:bg-primary/80"
                 >
                   Order Now
