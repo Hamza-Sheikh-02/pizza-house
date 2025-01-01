@@ -1,6 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import { client } from "@/sanity/lib/client";
+import PremiumFlavour from "@/components/MenuComps/PremiumFlavours";
+import FavouriteFlavours from "@/components/MenuComps/FavouriteFlavour";
 
 interface Product {
   title: string;
@@ -10,7 +12,6 @@ interface Product {
   stockStatus: string;
 }
 
-// Fetch product data
 async function fetchProduct(slug: string): Promise<Product | null> {
   const product = await client.fetch(
     `*[_type == "product" && slug.current == $slug][0]{
@@ -25,22 +26,35 @@ async function fetchProduct(slug: string): Promise<Product | null> {
   return product || null;
 }
 
-// Dynamic metadata
 export async function generateMetadata({
   params,
 }: {
   params: { slug: string };
 }) {
-  const product = await fetchProduct(params.slug);
-  return {
-    title: product?.title || "Product Not Found",
-  };
+  try {
+    const product = await fetchProduct(params.slug);
+    return {
+      title: product?.title || "Product Not Found",
+    };
+  } catch (error) {
+    console.error("Error fetching metadata:", error);
+    return { title: "Product Not Found" };
+  }
 }
 
-// Product Page Component
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params;
-  const product = await fetchProduct(slug);
+interface PageProps {
+  params: { slug: string };
+}
+
+export default async function Products({ params }: PageProps) {
+  let product: Product | null = null;
+
+  try {
+    product = await fetchProduct(params.slug);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return <div>Error loading product</div>;
+  }
 
   if (!product) {
     return <div>Product not found</div>;
@@ -49,39 +63,23 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const { title, description, price, images, stockStatus } = product;
 
   return (
-    <section className="text-gray-600 body-font overflow-hidden">
+    <section className="text-gray-600 dark:text-gray-200 body-font overflow-hidden">
       <div className="container px-5 py-24 mx-auto">
         <div className="lg:w-4/5 mx-auto flex flex-wrap">
           <Image
-            src={images[0]?.asset.url || "https://dummyimage.com/400x400"}
-            alt={title}
+            src={images[0]?.asset.url || "/premium-flavour.jpg"}
+            alt={title || "Product Image"}
             width={500}
             height={500}
             className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
           />
           <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+            <h1 className="text-gray-900 dark:text-gray-400 text-3xl title-font font-medium mb-1">
               {title}
             </h1>
-            <div className="flex mb-4">
-              <span className="flex items-center">
-                <svg
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  className="w-4 h-4 text-primary"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                </svg>
-                <span className="text-gray-600 ml-3">4 Reviews</span>
-              </span>
-            </div>
             <p className="leading-relaxed">{description}</p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
-              <span className="text-gray-600">
+              <span className="text-gray-600 dark:text-gray-200">
                 {stockStatus === "inStock" ? "In Stock" : "Out of Stock"}
               </span>
             </div>
@@ -96,6 +94,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </div>
+      <FavouriteFlavours />
+      <PremiumFlavour />
     </section>
   );
 }
